@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		body{
+			background-image: url(img/kayu.png);
+		}
+		.container{
+			width: 800px;
+			height: 1200px;
+			background: #ddd;
+			margin: 20px auto;
+			box-sizing: border-box;
+			border: 3px solid black;
+		}
+		h1{
+			text-align: center;
+			font-size: 40px;
+		}
+		h3{
+			margin-left: 20px;
+		}
+		textarea{  width: 750px;
+			height: 370px;
+			margin-left: 20px;
+			overflow: scroll;
+			background-color: white;
+			border: 3px solid black;
+		}
+.gambar{
+			width: 750px;
+			height: 370px;
+			margin-left: 20px;
+		}
+.overlay{ position:fixed;
+		width: 0;
+		height: 0;
+		overflow: hidden;
+		top:0;
+		left:0;
+		background:rgba(0, 0, 0, 0); 
+		z-index: 9999;
+		transition: 1s;
+		text-align: center;
+		padding: 100px 0;}
+
+.overlay:target {width: auto;
+		   height: auto;
+		   right:0;
+		   bottom:0;
+		   background:rgba(0, 0, 0, .8);}
+
+.overlay img { max-height:100%; 
+		box-shadow: 2px 2px 7px rgba(0, 0, 0,.5);}
+
+.overlay:target img { 
+	width: 1220px;
+	height: 1220px;
+	animation:slidedownfade 1s; }
+
+.overlay .close { position:absolute; 
+				top: 50px;
+				left: 50%;
+				margin-left: -20px;
+				color: white;
+				text-decoration: none;
+				background-color: black;
+				border: 1px solid white;
+				line-height: 14px;
+				padding: 5px;
+				opacity: 0;}
+
+.overlay:target .close{ animation:slidedownfade 0.5s 0.5s forwards; }
+
+button{
+	width: 100px;
+	height: 50px;
+	border-radius: 20px;
+	margin-top: 50px;
+	margin-left: 350px;
+}
+
+button:hover{
+	background-color: green;
+	transition: 0.3s;
+}
+
+@keyframes slidedownfade {
+	0% { opacity:0;
+		margin-top:-20px; }
+
+	100% { opacity:1;
+		margin-top:0;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+	<h1>Program c++ memasukan data nilai pada array</h1>
+	<h3>Program</h3>
+	<textarea>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+const int N = 100; // konstanta untuk jumlah maksimum data
+
+//membuat function struct untuk mendata atau memasukan sebuah nilai ke tipe data
+struct Nilai {
+string NPM;
+string nama;
+float UTS;
+float UAS;
+float absen;
+float tugas;
+};
+
+int main() {
+int jumlah_data;
+
+cout << "Jumlah Data: ";
+cin >> jumlah_data;
+
+Nilai data[N]; // membuat array of struct
+
+for (int i = 0; i < jumlah_data; i++) {
+cout << "NPM         : ";
+cin >> data[i].NPM;
+
+cout << "Nama        : ";
+cin.ignore();getline(cin,data[i].nama);
+
+cout << "Nilai UTS   : ";
+cin >> data[i].UTS;
+
+cout << "Nilai UAS   : ";
+cin >> data[i].UAS;
+
+cout << "Nilai Absen : ";
+cin >> data[i].absen;
+
+cout << "Nilai Tugas : ";
+cin >> data[i].tugas;
+
+cout<<endl<<endl;
+}
+cout<<"LAPORAN NILAI PEMROGRAMAN C++\n";
+cout<<"STMIK STI&K \n";
+cout<<"==============================================================\n";
+cout<<"No Npm     || Nama          ||UTS||UAS||ABSEN|| TUGAS_AKHIR  \n";
+cout<<"==============================================================\n";
+//mengeluarkan hasil
+
+// menghitung nilai akhir untuk setiap data
+for (int i = 0; i < jumlah_data; i++) {
+float NA = ((0.3 * data[i].UTS) + (0.4 * data[i].UAS) + (0.1 * data[i].absen) + (0.2 * data[i].tugas));
+cout<<i+1<<") "<<data[i].NPM<<"||"<<data[i].nama<<"|| "<<data[i].UTS<<" || "<<data[i].UAS<<" || "<<data[i].absen<<" || "<<data[i].tugas<<endl<<endl<<endl;
+cout << "Nilai Akhir " << data[i].nama << ": " << NA <<endl<<endl;
+cout<<"==============================================================\n";
+cout<<"Dibuat oleh = <irvan al rasyid/10822130/LJT-22>\n";
+}
+
+return 0;
+}
+	</textarea>
+	<h3>ouput<br>klik gambar untuk full screen</h3>
+	
+	<a href="#gambar-1">
+	<img class="gambar"src="img/output.png"alt="output">
+	<span></span>
+	</a>
+	<div class="overlay"id="gambar-1">
+	<a href="#" class="close">x close</a>
+	<img src="img/output.png"alt="output">
+	</div>
+		
+		<button onclick="window.location.href='index2.html'">Lanjut</button>
+	</div>
+
+</body>
+</html>

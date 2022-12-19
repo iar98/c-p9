@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		body{
+			background-image: url(img/kayu.png);
+		}
+		.container{
+			width: 800px;
+			height: 1200px;
+			background: #ddd;
+			margin: 20px auto;
+			box-sizing: border-box;
+			border: 3px solid black;
+		}
+		h1{
+			text-align: center;
+			font-size: 40px;
+		}
+		h3{
+			margin-left: 20px;
+		}
+		textarea{  width: 750px;
+			height: 370px;
+			margin-left: 20px;
+			overflow: scroll;
+			background-color: white;
+			border: 3px solid black;
+		}
+		.gambar{
+			width: 750px;
+			height: 370px;
+			margin-left: 20px;
+		}
+.overlay{ position:fixed;
+		width: 0;
+		height: 0;
+		overflow: hidden;
+		top:0;
+		left:0;
+		background:rgba(0, 0, 0, 0); 
+		z-index: 9999;
+		transition: 1s;
+		text-align: center;
+		padding: 100px 0;}
+
+.overlay:target {width: auto;
+		   height: auto;
+		   right:0;
+		   bottom:0;
+		   background:rgba(0, 0, 0, .8);}
+
+.overlay img { max-height:100%; 
+		box-shadow: 2px 2px 7px rgba(0, 0, 0,.5);}
+
+.overlay:target img { 
+	width: 1220px;
+	height: 1220px;
+	animation:slidedownfade 1s; }
+
+.overlay .close { position:absolute; 
+				top: 50px;
+				left: 50%;
+				margin-left: -20px;
+				color: white;
+				text-decoration: none;
+				background-color: black;
+				border: 1px solid white;
+				line-height: 14px;
+				padding: 5px;
+				opacity: 0;}
+
+.overlay:target .close{ animation:slidedownfade 0.5s 0.5s forwards; }
+
+button{
+	width: 100px;
+	height: 50px;
+	border-radius: 20px;
+	margin-top: 50px;
+	margin-left: 280px;
+}
+
+button:hover{
+	background-color: red;
+	transition: 0.3s;
+}
+
+.button2{
+	width: 100px;
+	height: 50px;
+	border-radius: 20px;
+	margin-top: 50px;
+	margin-left: 0;
+}
+
+.button2:hover{
+	background-color: green;
+	transition: 0.3s;
+}
+
+@keyframes slidedownfade {
+	0% { opacity:0;
+		margin-top:-20px; }
+
+	100% { opacity:1;
+		margin-top:0;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h1>Program c++ menjumlah dua buah matriks ber-ordo 2x2</h1>
+	<h3>Program</h3>
+
+	<textarea>
+		#include <iostream>
+using namespace std;
+
+int main() {
+// Deklarasikan dua buah matriks 2x2
+int matriks1[2][2];
+int matriks2[2][2];
+
+//memasukan sebuah matriks
+cout << "Masukkan nilai elemen matriks 1:" << endl;
+for (int i = 0; i < 2; i++) {
+for (int j = 0; j < 2; j++) {
+cin >> matriks1[i][j];
+}
+}
+
+cout << "Masukkan nilai elemen matriks 2:" << endl;
+for (int i = 0; i < 2; i++) {
+for (int j = 0; j < 2; j++) {
+cin >> matriks2[i][j];
+}
+}
+
+// Deklarasikan matriks hasil sebagai matriks kosong
+int hasil[2][2];
+
+// Lakukan perulangan untuk setiap elemen dari kedua matriks
+for (int i = 0; i < 2; i++) {
+for (int j = 0; j < 2; j++) {
+// Tambahkan elemen yang sama dari kedua matriks dan masukkan ke dalam matriks hasil
+hasil[i][j] = matriks1[i][j] + matriks2[i][j];
+}
+}
+
+// Cetak matriks hasil
+cout << "Hasil penjumlahan matriks:" << endl;
+for (int i = 0; i < 2; i++) {
+for (int j = 0; j < 2; j++) {
+cout << hasil[i][j] << " ";
+}
+cout << endl;
+}
+
+return 0;
+}
+	</textarea>
+
+<h3>ouput <br>klik gambar untuk full screen</h3>
+	<a href="#gambar-1">
+	<img class="gambar"src="img/output3.png"alt="output">
+	<span></span>
+	</a>
+	<div class="overlay"id="gambar-1">
+	<a href="#" class="close">x close</a>
+	<img src="img/output3.png"alt="output">
+	</div>
+
+	<button onclick="window.location.href='index2.html'">Sebelumnya</button>
+	<button class="button2"onclick="window.location.href='index.html'">Home</button>
+
+</body>
+</html>
